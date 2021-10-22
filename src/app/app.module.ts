@@ -18,7 +18,8 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AuthGaurd } from './components/login/auth.gaurd';
 import { AdminGaurd } from './components/login/admin.gaurd';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRouters: Routes = [
   {
@@ -61,7 +62,8 @@ const appRouters: Routes = [
     MatIconModule,
     MatDialogModule,
     FlexLayoutModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

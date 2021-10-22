@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { User } from '../users/user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +18,7 @@ export class BlogServices {
             'title': body.title,
             'content': body.content,
             'date': body.date,
-            'rating': 0 
+            'rating': body.rating
         });
     }
 
@@ -58,6 +56,13 @@ export class BlogServices {
             'title' : body.title,
             'content' : body.content,
             'date' : body.date
+        }).toPromise();
+    }
+
+    rateBlog(body : any) {
+        return this.http.patch('/api/rateBlog', {
+            'id' : body.id,
+            'rating': body.rating
         }).toPromise();
     }
 

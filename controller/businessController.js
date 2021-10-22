@@ -78,6 +78,17 @@ async function editBlog(req,res) {
     })
 }
 
+async function rateBlog(req,res) {
+    let blog = await Blogs.findOne({ _id : req.body.id });
+    blog.rating = req.body.rating;
+    console.log(req.body.rating);
+    blog.save();
+    res.json({
+        'statusCode' : 200,
+        'blog' : blog
+    })
+}
+
 module.exports = {
     createBlog,
     getUserBlogs,
@@ -86,5 +97,6 @@ module.exports = {
     getUsers,
     deleteUser,
     ApproveOrRejectBlog,
-    editBlog
+    editBlog,
+    rateBlog
 }

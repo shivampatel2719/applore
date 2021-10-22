@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginServices } from '../login/login.services';
 import { BlogServices } from './blog.service';
 import { ConfirmationComponentComponent } from 'src/app/dialogs/confirmation-component/confirmation-component.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-blog',
@@ -15,6 +16,9 @@ export class BlogComponent implements OnInit,OnDestroy {
   user: any;
   editBlogMode: any = {};
   editedContent: any = {};
+  ratings: any = {};
+  fixedratings: any = {};
+  hoverStar: any = {};
   blogs: any = {
     'approved' : [],
     'pending': [],
@@ -37,12 +41,21 @@ export class BlogComponent implements OnInit,OnDestroy {
     private router: Router,
     public loginService: LoginServices,
     public blogServices: BlogServices,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackbar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
+    // this.user =  {
+    //       'username': 'shiv sharma', 
+    //       'email': 'shivam@ai', 
+    //       'id': '6171b7475e6d1028ecb4ff51', 
+    //       'isAdmin': true, 
+    //       '_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…AwOX0._nVuNEP3B4OiBC66sT4tOOh3EsN5AfoCnwBx68wLNN8'
+    //     }; 
     this.loginService.loggedUser.subscribe((user) => {
       this.user = user;
+      console.log(this.user);
     })
     this.fetchBlogs();
     this.randomGenerator();
@@ -73,7 +86,6 @@ export class BlogComponent implements OnInit,OnDestroy {
       });
       this.fillValues(resBlogs,'userBlogs');
     }
-    console.log(this.blogs);
   }
 
   fillValues(resBlogs : any, keyName : any) {
@@ -85,6 +97,9 @@ export class BlogComponent implements OnInit,OnDestroy {
             'title' : v['title'],
             'content': v['content']
           };
+          this.ratings[v['_id']] = v['rating'];
+          this.hoverStar[v['_id']] = false;
+          this.fixedratings[v['_id']] = v['rating'];
           if(v['state'] == 2 ){
             this.blogs['approved'].push(v);
           }
@@ -108,6 +123,9 @@ export class BlogComponent implements OnInit,OnDestroy {
             'title' : v['title'],
             'content': v['content']
           };
+          this.ratings[v['_id']] = v['rating'];
+          this.hoverStar[v['_id']] = false;
+          this.fixedratings[v['_id']] = v['rating'];
           if(v['state'] == 1) {
             this.blogs['pending'].push(v);
           }
@@ -154,6 +172,7 @@ export class BlogComponent implements OnInit,OnDestroy {
           }
         });
         this.clear();
+        this.snackbar.open(`Blog Saved `, 'close', { duration: 2000 });
         this.blogCategory = 'pending';
       });
     }
@@ -189,6 +208,7 @@ export class BlogComponent implements OnInit,OnDestroy {
             }
           });
           this.editBlogMode[id] = false;
+          this.snackbar.open(`Blog Updated `, 'close', { duration: 2000 });
         }
       });
     }
@@ -203,6 +223,7 @@ export class BlogComponent implements OnInit,OnDestroy {
     }).afterClosed().toPromise();
     if(res['value']) {
       await this.blogServices.deleteBlog(id);
+      this.snackbar.open(`Blog Deleted `, 'close', { duration: 2000 });
       this.blogs[type] = this.blogs[type].filter((x : any) => x._id != id);
     } 
   }
@@ -219,6 +240,7 @@ export class BlogComponent implements OnInit,OnDestroy {
         'id' : id,
         'status' : type == 'approve' ? 2 : 0 
       });
+      this.snackbar.open(`Blog ${type == 'approve' ? 'approved' : 'rejected'} `, 'close', { duration: 2000 });
       this.blogs['pending'] = this.blogs['pending'].filter((x : any) => x._id != id);
       Object.entries(res).forEach(([key,value]) => {
         if(key == 'blog') {
@@ -231,6 +253,20 @@ export class BlogComponent implements OnInit,OnDestroy {
         }
       });
     }
+  }
+
+  async rateBlog(id: any, rating: any) {
+    this.fixedratings[id] = rating;
+    await this.blogServices.rateBlog({
+      id : id,
+      rating : rating
+    });
+    this.snackbar.open(`Blog Rated Successfully `, 'close', { duration: 2000 });
+  }
+
+  hoverStarStart(id : any, rating : any) {
+    this.ratings[id] = rating;
+    this.hoverStar[id] = true;
   }
 
   logoutUser() {

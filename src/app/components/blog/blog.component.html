@@ -64,31 +64,85 @@
                     <mat-expansion-panel style="border: 1px solid #00000096;margin: 1rem;" [expanded]="'true'">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                <div style="width: 80%;">
+                                <div style="width: 70%;" *ngIf = "!editBlogMode[blog._id]">
                                     <p>
-                                        <span style="font-weight: bold;font-size: 25px;">{{ blog.title | titlecase}}</span>&nbsp; 
+                                        <span style="font-weight: bold;font-size: 25px;">{{ blog.title | titlecase | slice : 0 : 15}}</span>&nbsp; 
                                         <span style="font-style: italic;font-size: 12px;">{{ blog.date | date :'d/M/y hh:mm a' }} </span> 
                                         <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : blogCategory == 'pending' ? 'purple' : 'red'}">
                                             {{ blogCategory == 'approved' ?  '(APPROVED)' : ''}}
                                             {{ blogCategory == 'pending' ?  '(PENDING)' : ''}}
                                             {{ blogCategory == 'rejected' ?  '(REJECTED)' : ''}}
-                                        </span>&nbsp; 
-                                        <span style="font-style: italic;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span> 
+                                        </span>&nbsp;
+                                        <span style="font-style: italic;font-weight: bold;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span> 
+                                    </p>  
+                                </div>
+                                <div style="width: 70%;" *ngIf = "editBlogMode[blog._id]">
+                                    <p>
+                                        <span style="font-weight: bold;font-size: 25px;">Editing Blog</span>&nbsp; 
+                                        <span style="font-style: italic;font-size: 12px;">{{ blog.date | date :'d/M/y hh:mm a' }} </span> &nbsp;
+                                        <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : 'purple'}">{{ blogCategory == 'approved' ?  '(APPROVED)' : '(PENDING)'}} </span> 
                                     </p>    
                                 </div>
                                 <div style="margin: auto;">
-                                    <button *ngIf="blogCategory != 'rejected'" mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();toggleEdit(blog._id)">
-                                        <mat-icon>edit</mat-icon>
-                                    </button>
-                                    <button *ngIf="blogCategory != 'rejected'" mat-flat-button class="button_slide slide_down" (click)="deleteBlog(blog._id,blogCategory);$event.stopPropagation()">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
+                                    <p>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 1)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 1 && hoverStar[blog._id] || fixedratings[blog._id] < 1 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 1 && hoverStar[blog._id] || fixedratings[blog._id] >= 1 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id, 1);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 2)" (mouseout)="hoverStar[blog._id]=false"
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 2 && hoverStar[blog._id] || fixedratings[blog._id] < 2 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 2 && hoverStar[blog._id] || fixedratings[blog._id] >= 2 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 2);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 3)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 3 && hoverStar[blog._id] || fixedratings[blog._id] < 3 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 3 && hoverStar[blog._id] || fixedratings[blog._id] >= 3 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 3);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 4)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 4 && hoverStar[blog._id] || fixedratings[blog._id] < 4 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 4 && hoverStar[blog._id] || fixedratings[blog._id] >= 4 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 4);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 5)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 5 && hoverStar[blog._id] || fixedratings[blog._id] < 5 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 5 && hoverStar[blog._id] || fixedratings[blog._id] >= 5 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 5);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        &nbsp;
+                                        <button *ngIf="blogCategory != 'rejected'" mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();toggleEdit(blog._id)">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button *ngIf="blogCategory != 'rejected'" mat-flat-button class="button_slide slide_down" (click)="deleteBlog(blog._id,blogCategory);$event.stopPropagation()">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </p>
                                 </div>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <span>
+                        <div style="width: 80%;margin-top: 2rem;" *ngIf = "editBlogMode[blog._id]">
+                            <form class="example-form">
+                                <mat-form-field style="width: 25rem" class="example-full-width" appearance="legacy">
+                                  <mat-label><strong>Title</strong></mat-label>
+                                  <input matInput placeholder="Title here" [(ngModel)]="editedContent[blog._id]['title']" 
+                                  [ngModelOptions]="{standalone: true}"
+                                  (click)="$event.stopPropagation()" [value] = "blog.title" style="width: 25rem;">
+                                </mat-form-field>
+                                <br>
+                            </form>
+                        </div>
+                        <mat-form-field style="width: 40rem;height: 10rem;"  *ngIf="editBlogMode[blog._id]" class="example-full-width" appearance="legacy">
+                            <mat-label>Blog Content</mat-label>
+                            <textarea (click)="$event.stopPropagation()" matInput placeholder="Content here" style="height: 8rem;" 
+                            [(ngModel)]="editedContent[blog._id]['content']" [ngModelOptions]="{standalone: true}"></textarea>
+                          </mat-form-field>
+                        <span *ngIf="!editBlogMode[blog._id]">
                             {{ blog.content }}
                         </span>
+                        <div *ngIf="editBlogMode[blog._id]">
+                            <button mat-stroked-button color="primary" (click)="editBlog(blog._id,blogCategory)">Update</button>
+                        </div>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
@@ -120,15 +174,15 @@
                     [expanded]="'true'">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                <div style="width: 80%;" *ngIf = "!editBlogMode[blog._id]">
+                                <div style="width: 60%;display: inline-block;" *ngIf = "!editBlogMode[blog._id]">
                                     <p>
-                                        <span style="font-weight: bold;font-size: 25px;">{{ blog.title | titlecase}}</span>&nbsp; 
+                                        <span style="font-weight: bold;font-size: 25px;">{{ blog.title | titlecase | slice : 0 : 15}}</span>&nbsp; 
                                         <span style="font-style: italic;font-size: 12px;">{{ blog.date | date :'d/M/y hh:mm a' }} </span> &nbsp;
-                                        <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : 'purple'}">{{ blogCategory == 'approved' ?  '(APPROVED)' : '(PENDING)'}} </span>&nbsp;
-                                        <span style="font-style: italic;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span>  
-                                    </p>    
+                                        <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : 'purple'}">{{ blogCategory == 'approved' ?  '(APPROVED)' : '(PENDING)'}} </span> &nbsp;
+                                        <span style="font-style: italic;font-weight: bold;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span> 
+                                    </p>
                                 </div>
-                                <div style="width: 80%;" *ngIf = "editBlogMode[blog._id]">
+                                <div style="width: 60%;" *ngIf = "editBlogMode[blog._id]">
                                     <p>
                                         <span style="font-weight: bold;font-size: 25px;">Editing Blog</span>&nbsp; 
                                         <span style="font-style: italic;font-size: 12px;">{{ blog.date | date :'d/M/y hh:mm a' }} </span> &nbsp;
@@ -136,18 +190,46 @@
                                     </p>    
                                 </div>
                                 <div style="margin: auto;">
-                                    <button mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();toggleEdit(blog._id)">
-                                        <mat-icon>edit</mat-icon>
-                                    </button>
-                                    <button mat-flat-button class="button_slide slide_down" (click)="deleteBlog(blog._id,blogCategory);$event.stopPropagation()">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
-                                    <button *ngIf="blogCategory != 'approved'"  mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();ApproveOrRejectBlog(blog._id,'approve')">
-                                        <mat-icon>done</mat-icon>
-                                    </button>
-                                    <button *ngIf="blogCategory != 'approved'" mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();ApproveOrRejectBlog(blog._id,'reject')">
-                                        <mat-icon>close</mat-icon>
-                                    </button>
+                                    <p>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 1)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 1 && hoverStar[blog._id] || fixedratings[blog._id] < 1 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 1 && hoverStar[blog._id] || fixedratings[blog._id] >= 1 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id, 1);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 2)" (mouseout)="hoverStar[blog._id]=false"
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 2 && hoverStar[blog._id] || fixedratings[blog._id] < 2 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 2 && hoverStar[blog._id] || fixedratings[blog._id] >= 2 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 2);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 3)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 3 && hoverStar[blog._id] || fixedratings[blog._id] < 3 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 3 && hoverStar[blog._id] || fixedratings[blog._id] >= 3 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 3);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 4)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 4 && hoverStar[blog._id] || fixedratings[blog._id] < 4 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 4 && hoverStar[blog._id] || fixedratings[blog._id] >= 4 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 4);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        <svg height="20" width="20" (mouseover)="hoverStarStart(blog._id , 5)" (mouseout)="hoverStar[blog._id]=false" 
+                                        [ngClass] = "{'blank-star' : ratings[blog._id] < 5 && hoverStar[blog._id] || fixedratings[blog._id] < 5 && !hoverStar[blog._id], 'fill-star' : ratings[blog._id] >= 5 && hoverStar[blog._id] || fixedratings[blog._id] >= 5 && !hoverStar[blog._id]}"
+                                        (click)="rateBlog(blog._id , 5);$event.stopPropagation()">
+                                        <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+                                        </svg>
+                                        &nbsp;
+                                        <button mat-flat-button class="button_slide slide_down" (click)="$event.stopPropagation();toggleEdit(blog._id)">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-flat-button class="button_slide slide_down" (click)="deleteBlog(blog._id,blogCategory);$event.stopPropagation()">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                        <button *ngIf="blogCategory != 'approved'"  mat-flat-button class="button_slide slide_green" (click)="$event.stopPropagation();ApproveOrRejectBlog(blog._id,'approve')">
+                                            <mat-icon>done</mat-icon>
+                                        </button>
+                                        <button *ngIf="blogCategory != 'approved'" mat-flat-button class="button_slide slide_red" (click)="$event.stopPropagation();ApproveOrRejectBlog(blog._id,'reject')">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                    </p>    
                                 </div>
                             </mat-panel-title>
                         </mat-expansion-panel-header>

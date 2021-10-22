@@ -10,5 +10,6 @@ router.patch('/blog',BusinessController.ApproveOrRejectBlog);
 router.get('/users',BusinessController.getUsers);
 router.delete('/users/:id',BusinessController.deleteUser);
 router.patch('/editblog',BusinessController.editBlog);
+router.patch('/rateBlog',BusinessController.rateBlog);
 
 module.exports = router;
