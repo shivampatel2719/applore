@@ -20,6 +20,7 @@ import { AuthGaurd } from './components/login/auth.gaurd';
 import { AdminGaurd } from './components/login/admin.gaurd';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const appRouters: Routes = [
   {
@@ -63,7 +64,8 @@ const appRouters: Routes = [
     MatDialogModule,
     FlexLayoutModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

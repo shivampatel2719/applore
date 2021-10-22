@@ -50,17 +50,9 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user =  {
-      'username': 'shivam patel', 
-      'email': 'shivam@ai', 
-      'id': '6171631f8d774a327c5d99b4', 
-      '_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…3ODZ9.iB2nexQ17IR4CZxmcrwWJ5SARzT1s51MDLPRpF-8K4M',
-      'isAdmin': true
-    }
-    // this.loginService.loggedUser.subscribe((user) => {
-    //   console.log(user);
-    //   this.user = user;
-    // })
+    this.loginService.loggedUser.subscribe((user) => {
+      this.user = user;
+    });
     this.fetchUsers();
   }
 
@@ -68,19 +60,15 @@ export class UsersComponent implements OnInit {
     let users = await this.userServices.fetchUsers();
     // this.userList = users;
     Object.entries(users).forEach(([key,value]) => {
-      console.log(key);
       if(key == 'users') {
         this.userList = value.slice();
       }
     });
     this.userList.forEach((user : any) => {
-      console.log(user);
       let [ firstName , lastName ] = user['name'].split(' ');
-      console.log(firstName);
       user.firstName = (firstName || " ").toUpperCase();
       user.lastName = (lastName || " ").toUpperCase();
     });
-    console.log(users);
   }
 
   deleteUser(id : any) {

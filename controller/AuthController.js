@@ -108,28 +108,7 @@ async function verifyNotAuthentication(req,res,next) {
     }
 };
 
-
-function checkUnAuthenticated(req,res,next){
-    if(req.session.isAuthenticated){
-        res.redirect('/')
-    }
-    else{
-        next()
-    }
-}
-
-function checkAuthenticated(req,res,next){
-    if(req.session.isAuthenticated){
-        next()
-    }
-    else {
-        res.redirect('/login')
-    }
-}
-
 module.exports = {
-    checkAuthenticated,
-    checkUnAuthenticated,
     registerUser,
     loginUser,
     verifyAuthentication,
