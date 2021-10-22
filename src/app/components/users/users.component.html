@@ -1,0 +1,49 @@
+<body>
+    <div class="upper-div">
+        <div class="inner-div">
+         Manage Users.
+         <button mat-stroked-button style="float: right;" color="warn" (click)="logoutUser()">Log out</button>
+         <button mat-stroked-button style="float: right;margin-right: 1rem;" color="primary" (click)="routeToBlogs()">Manage Blogs</button>
+        </div>   
+     </div>
+
+     <div class="display-flex flex-wrap-wrap">
+        <div class="parent" *ngFor="let user of userList; let userIndex = index;">
+            <div class="team-user-block" style="margin-left: 2rem;">
+              <div class="team-user-cover">
+                <div [ngClass]="{'icon-bg-p': true}" class="remove-team-member">
+                  <mat-icon class="icon-bg remove-icon" (click)="deleteUser(user._id)">
+                    clear
+                  </mat-icon>
+                </div>
+              </div>       
+              <div class="team-user-pic">
+                <div class="name" [style.backgroundColor]="randomColor(userIndex)">
+                  <span class="name-start">
+                    {{ user.firstName ? user.firstName[0] : ' ' }}&nbsp;{{ user.lastName ? user.lastName[0] : ' ' }}
+                  </span>
+                </div>
+              </div>
+              <div class="team-user-details">
+                <div class="team-user-name">
+                  <strong>{{ user.name | titlecase}}</strong>
+                </div>
+                <!-- <div class="team-user-name">
+                    <strong>{{ user.email}}</strong>
+                </div> -->
+                <div class="team-user-role">
+                  {{ user.isAdmin ? 'Admin' : 'User'}}
+                </div>
+              </div>
+            </div>
+            <!-- <div class="team-user-block" *ngIf="teamUser.onGoingRequest">
+              <div style="text-align: center;padding-top: 45%;">
+                <mat-progress-spinner mode="indeterminate" [diameter]="25"
+                  style="position: relative;left: 45%;">
+                </mat-progress-spinner>
+              </div>
+            </div> -->
+        </div>
+     </div>
+    
+</body>

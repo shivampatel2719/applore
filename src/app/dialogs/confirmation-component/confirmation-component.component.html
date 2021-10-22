@@ -1,0 +1,52 @@
+<div class="fl-confirmation-modal">
+    <div class="header-title">
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center" style="padding-right: 12px;">
+        <div fxFlex="90" class="data-title">
+          {{data.title}}
+        </div>
+        <div fxFlex="10" class="data-close" fxLayoutAlign="center center">
+          <span class="cursor-pointer close-icon" (click)="closeModal(false)">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.5205 20.4802C11.7205 20.6802 11.9738 20.7736 12.2271 20.7736C12.4805 20.7736 12.7471 20.6802 12.9338 20.4802L16.0005 17.4136L19.0671 20.4802C19.2671 20.6802 19.5205 20.7736 19.7738 20.7736C20.0271 20.7736 20.2805 20.6802 20.4805 20.4802C20.8671 20.0936 20.8671 19.4536 20.4805 19.0669L17.4138 16.0002L20.4805 12.9336C20.8671 12.5469 20.8671 11.9069 20.4805 11.5202C20.0938 11.1336 19.4538 11.1336 19.0671 11.5202L16.0005 14.5869L12.9338 11.5202C12.5471 11.1336 11.9071 11.1336 11.5205 11.5202C11.1338 11.9069 11.1338 12.5469 11.5205 12.9336L14.5871 16.0002L11.5205 19.0669C11.1338 19.4536 11.1338 20.0936 11.5205 20.4802Z"
+                fill="black" fill-opacity="0.6" />
+              <path
+                d="M20.0003 30.3334H12.0003C4.76033 30.3334 1.66699 27.2401 1.66699 20.0001V12.0001C1.66699 4.76008 4.76033 1.66675 12.0003 1.66675H20.0003C27.2403 1.66675 30.3337 4.76008 30.3337 12.0001V20.0001C30.3337 27.2401 27.2403 30.3334 20.0003 30.3334ZM12.0003 3.66675C5.85366 3.66675 3.66699 5.85341 3.66699 12.0001V20.0001C3.66699 26.1467 5.85366 28.3334 12.0003 28.3334H20.0003C26.147 28.3334 28.3337 26.1467 28.3337 20.0001V12.0001C28.3337 5.85341 26.147 3.66675 20.0003 3.66675H12.0003Z"
+                fill="black" fill-opacity="0.6" />
+            </svg>
+  
+          </span>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="message-box">
+      <div class="message-box__message">
+        {{data.message}}
+      </div>
+    </div>
+  
+    <div class="action-block">
+      <div fxLayout="row" fxLayoutAlign="end start">
+        <div>
+          <button class="fl-close-btn" (click)="closeModal(false)">
+            <span>
+              {{data.cancelButton || 'Cancel'}}
+  
+            </span>
+          </button>
+        </div>
+        <div>
+          <button class="fl-confirm-btn" (click)="closeModal(true)">
+            <span>
+              {{data.confirmButton || 'Confirm'}}
+  
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  

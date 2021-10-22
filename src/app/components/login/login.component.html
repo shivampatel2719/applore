@@ -1,0 +1,38 @@
+<body>
+    <div class="login" *ngIf="type == 'LOGIN'">
+        <img class="image" src="../../../assets/images/app.jpg">
+        <h1>Welcome Back</h1>
+        <h2>Log In</h2>
+        <form method="post">
+            <input type="email" [(ngModel)]="email" placeholder="User Email" [ngModelOptions]="{standalone: true}" required="required"/>
+            <input type="password" [(ngModel)]="passwords['password']" placeholder="Password" [ngModelOptions]="{standalone: true}" required="required"/>
+            <mat-error class="error" *ngIf="error && error.length">
+                {{ error }}
+            </mat-error>
+            <br>
+            <a href="#" onclick="return false;" (click)="type = 'REGISTER'">Don't have an account?</a>
+            <button style="margin-top: 10px;" (click)="onSubmit('login')" [disabled] = "!email || !passwords['password']"
+            class="btn btn-primary btn-block btn-large">Let me in.</button>
+        </form>
+    </div>
+    <div class="login" *ngIf="type == 'REGISTER'">
+        <img class="image" src="../../../assets/images/app.jpg">
+        <h1>Register Yourself</h1>
+        <h2>Sign In</h2>
+        <form method="post">
+            <input type="text" [(ngModel)]="username" placeholder="User Name" [ngModelOptions]="{standalone: true}"/>
+            <input type="email" [(ngModel)]="email" placeholder="User Email" [ngModelOptions]="{standalone: true}" required="required" />
+            <input type="password" [(ngModel)]="passwords['password']" [ngModelOptions]="{standalone: true}" (ngModelChange)="verifyPassword()" placeholder="Password" required="required" />
+            <input type="password" [(ngModel)]="passwords['repassword']" [ngModelOptions]="{standalone: true}" (ngModelChange)="verifyPassword()" name="rp" placeholder="Re-enter Password" required="required" />
+            <mat-error class="error" *ngIf="error && error.length">
+                {{ error }}
+            </mat-error>
+            <br>
+            <mat-checkbox style='padding-top: 10px;' [(ngModel)]="isAdmin" [ngModelOptions]="{standalone: true}">&nbsp;<span style="color: aliceblue;font-size: 12px;">Admin</span></mat-checkbox>
+            <br>
+            <a href="#" onclick="return false;" (click)="type = 'LOGIN'" style="text-align: left;">Already Registered ?</a>
+            <button style="margin-top: 10px;" (click)="onSubmit('register')"
+            class="btn btn-primary btn-block btn-large">Sign me in.</button>
+        </form>
+    </div>
+</body>

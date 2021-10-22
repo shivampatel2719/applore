@@ -1,0 +1,319 @@
+.team-mat-accordion .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    margin: 5px 0px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+  }
+.team-mat-accordion .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    margin: 5px 0px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+}
+    
+.uppc {
+    text-transform: uppercase !important;
+  }
+
+  .pg-tl {
+    font-size: 18px !important;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-left: 20px;
+    color: black !important;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    padding: 1rem;
+  }
+
+.upper-div {
+    background-color: #FAFAFA !important; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 8%;
+}
+.inner-div {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.work-categories-btn-block {
+  margin: 8px 0;
+}
+
+.policy-text,
+.android-text {
+  transition: max-width 1s ease-out 0.1s, opacity 1s ease-out 0.1s;
+}
+.policy-text.active,
+.android-text.active {
+  max-width: 250px;
+  transition: max-width 1s ease-out 0.1s, opacity 1s ease-out 0.1s;
+  color: white;
+}
+span.policy-text,
+span.android-text {
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.15px;
+}
+#policy-icons-container
+  {
+    width: 50%;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+  #policy-icons-container-2
+  {
+    width: 20%;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+  .policy-icons
+  {
+    flex-basis: 48%;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    padding-top: 2px;
+  }
+
+  .policy-text
+  {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-style: normal;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .icon-divider
+  {
+    height: 39px;
+    content: ' ';
+    width:1px ;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .policy-icons.active-p-icon
+  {
+    background: #F4511E;
+    color: #FFFFFF;
+  }
+  .policy-icons.active-p-icon svg path
+  {
+    fill: white;
+    fill-opacity: 1;
+  }
+  .team-mat-accordion .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    margin: 5px 0px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+  }
+.team-mat-accordion .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    margin: 5px 0px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+}
+    
+.uppc {
+    text-transform: uppercase !important;
+  }
+
+  .pg-tl {
+    font-size: 18px !important;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-left: 20px;
+    color: black !important;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    padding: 1rem;
+  }
+
+.upper-div {
+    background-color: #FAFAFA !important; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 8%;
+}
+.inner-div {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.work-categories-btn-block {
+  margin: 8px 0;
+}
+
+.policy-text,
+.android-text {
+  transition: max-width 1s ease-out 0.1s, opacity 1s ease-out 0.1s;
+}
+.policy-text.active,
+.android-text.active {
+  max-width: 250px;
+  transition: max-width 1s ease-out 0.1s, opacity 1s ease-out 0.1s;
+  color: white;
+}
+span.policy-text,
+span.android-text {
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.15px;
+}
+#policy-icons-container
+  {
+    width: 50%;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+  .policy-icons
+  {
+    flex-basis: 48%;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    padding-top: 2px;
+  }
+
+  .policy-text
+  {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-style: normal;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .icon-divider
+  {
+    height: 39px;
+    content: ' ';
+    width:1px ;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .policy-icons.active-p-icon
+  {
+    background: #F4511E;
+    color: #FFFFFF;
+  }
+  .policy-icons.active-p-icon svg path
+  {
+    fill: white;
+    fill-opacity: 1;
+  }
+
+  .team-user-block {
+    width: 185px;
+    text-align: center;
+    height: 200px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .team-user-block:hover {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  .team-user-block:hover .remove-team-member .icon-bg.remove-icon {
+    display: block;
+  }
+  .team-user-cover {
+    height: 75px;
+    background: #eaeaea;
+    position: relative;
+  }
+  .team-user-pic {
+    position: relative;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .team-user-pic .name {
+    margin-bottom: 12px;
+    width: 60px;
+    position: absolute;
+    height: 60px;
+    border: 2px solid white;
+    border-radius: 100px;
+    background: #dadada;
+    left: 0%;
+    margin-top: 27px;
+  }
+  .profile-circle {
+    border-radius: 100%;
+    display: block;
+    overflow: hidden;
+    height: 60px;
+    width: 60px;
+  }
+  
+  .team-user-details {
+    padding-top: 40px;
+  }
+  .remove-team-member {
+    float: right;
+    position: relative;
+    top: 4px;
+    right: 3px;
+  }
+      
+  .icon-bg-p:hover {
+    cursor: pointer;
+  }
+  
+  .icon-bg-p:hover .icon-bg {
+    visibility: visible;
+  }
+  
+  .icon-bg-p:hover {
+    cursor: pointer;
+  }
+  span.name-start {
+    position: relative;
+    top: 18px;
+    font-size: 30px;
+  }
+  .teams-users-div {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 450px;
+  }
+  .parent {
+    display: inline-block;
+  } 
+  .team-user-name {
+    font-size: 18px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+  }
+  .team-user-role {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }

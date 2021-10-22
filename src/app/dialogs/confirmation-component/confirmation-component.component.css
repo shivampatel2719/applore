@@ -1,0 +1,100 @@
+* {
+    font-family: Roboto;
+  }
+  .header-title {
+    height: 88px;
+    background: linear-gradient(95.19deg, #ffb2b0 -7.53%, rgba(255, 178, 176, 0) 63.94%);
+    border-radius: 0px 0px 16px 16px;
+  }
+  
+  .data-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.18px;
+    color: #8d0000;
+    padding-left: 40px;
+  }
+  .close-icon:hover svg path {
+    fill-opacity: 0.87;
+  }
+  .message-box {
+    padding: 30px 0;
+    margin-left: 40px;
+    margin-right: 25px;
+  }
+  .message-box__message {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #000000;
+  }
+  .action-block {
+    margin-left: 40px;
+    margin-right: 25px;
+  }
+  
+  button.fl-close-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    background: white;
+    outline: 0;
+    cursor: pointer;
+    margin-right: 16px;
+    height: 40px;
+  }
+  
+  .fl-close-btn span {
+    margin: 0px 2px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.6);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .fl-close-btn:hover span {
+    color: rgba(0, 0, 0, 0.87);
+    transition: all 0.2s;
+  }
+  button.fl-confirm-btn {
+    border-color: transparent;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    background: #e53935;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 40px;
+  }
+  
+  button.fl-confirm-btn:hover {
+    box-shadow: 0px 15px 30px -5px rgba(229, 57, 53, 0.35);
+    transition: all 0.2s;
+  }
+  
+  .fl-confirm-btn span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 2px;
+  }
+  
