@@ -18,7 +18,7 @@ function createBlog(req,res) {
 }
 
 async function getAllBlogs(req,res) {
-    let userBlogs = await Blogs.find().exec();
+    let userBlogs = await Blogs.find().populate("user").exec();
     res.json({
         'statusCode' : 200,
         'userBlogs' : userBlogs
@@ -26,7 +26,7 @@ async function getAllBlogs(req,res) {
 }
 
 async function getUserBlogs(req,res) {
-    let userBlogs = await Blogs.find({user: req.params.id}).exec();
+    let userBlogs = await Blogs.find({user: req.params.id}).populate("user").exec();
     res.json({
         'statusCode' : 200,
         'userBlogs' : userBlogs

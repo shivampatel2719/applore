@@ -41,16 +41,8 @@ export class BlogComponent implements OnInit,OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    // this.user =  {
-    //       'username': 'shiv sharma', 
-    //       'email': 'shivam@ai', 
-    //       'id': '6171b7475e6d1028ecb4ff51', 
-    //       'isAdmin': true, 
-    //       '_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…AwOX0._nVuNEP3B4OiBC66sT4tOOh3EsN5AfoCnwBx68wLNN8'
-    //     }; 
     this.loginService.loggedUser.subscribe((user) => {
       this.user = user;
-      console.log(this.user);
     })
     this.fetchBlogs();
     this.randomGenerator();
@@ -81,6 +73,7 @@ export class BlogComponent implements OnInit,OnDestroy {
       });
       this.fillValues(resBlogs,'userBlogs');
     }
+    console.log(this.blogs);
   }
 
   fillValues(resBlogs : any, keyName : any) {

@@ -72,7 +72,8 @@
                                             {{ blogCategory == 'approved' ?  '(APPROVED)' : ''}}
                                             {{ blogCategory == 'pending' ?  '(PENDING)' : ''}}
                                             {{ blogCategory == 'rejected' ?  '(REJECTED)' : ''}}
-                                        </span> 
+                                        </span>&nbsp; 
+                                        <span style="font-style: italic;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span> 
                                     </p>    
                                 </div>
                                 <div style="margin: auto;">
@@ -123,7 +124,8 @@
                                     <p>
                                         <span style="font-weight: bold;font-size: 25px;">{{ blog.title | titlecase}}</span>&nbsp; 
                                         <span style="font-style: italic;font-size: 12px;">{{ blog.date | date :'d/M/y hh:mm a' }} </span> &nbsp;
-                                        <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : 'purple'}">{{ blogCategory == 'approved' ?  '(APPROVED)' : '(PENDING)'}} </span> 
+                                        <span style="font-weight: bold;font-size: 12px;" [ngStyle]="{'color' : blogCategory == 'approved' ?  'green' : 'purple'}">{{ blogCategory == 'approved' ?  '(APPROVED)' : '(PENDING)'}} </span>&nbsp;
+                                        <span style="font-style: italic;font-size: 12px;"> - {{ blog?.user?.name | titlecase }} </span>  
                                     </p>    
                                 </div>
                                 <div style="width: 80%;" *ngIf = "editBlogMode[blog._id]">
