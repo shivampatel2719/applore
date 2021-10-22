@@ -153,6 +153,24 @@
                 <mat-progress-spinner mode="indeterminate" [diameter]="45"></mat-progress-spinner>
             </div>
         </div>
+        <div *ngIf="blogCategory == 'new'" style="text-align: center;margin: 3rem;">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="legacy" style="width: 50rem;">
+                  <mat-label><strong>Title</strong></mat-label>
+                  <input matInput placeholder="Title here" [ngModelOptions]="{standalone: true}" [(ngModel)]="blogTitle">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="legacy" style="width: 50rem;">
+                  <mat-label>Blog Content</mat-label>
+                  <textarea matInput placeholder="Content here" style="height: 100px;" [ngModelOptions]="{standalone: true}" [(ngModel)]="blogContent"></textarea>
+                </mat-form-field>
+                <div>
+                    <button mat-stroked-button color="primary" (click)="saveBlog()">Save</button>
+                    &nbsp;
+                    <button mat-stroked-button color="warn" (click)="clear()">Clear</button>
+                </div>
+            </form>          
+        </div>
     </div>
     <div *ngIf="user.isAdmin">
         <div *ngIf="blogCategory != 'new'">
